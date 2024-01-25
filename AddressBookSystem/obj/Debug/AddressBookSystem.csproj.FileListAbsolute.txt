@@ -1,0 +1,7 @@
+C:\Users\lenovo\Desktop\training\AddressBookSystem\AddressBookSystem\obj\Debug\AddressBookSystem.csproj.AssemblyReference.cache
+C:\Users\lenovo\Desktop\training\AddressBookSystem\AddressBookSystem\obj\Debug\AddressBookSystem.csproj.CoreCompileInputs.cache
+C:\Users\lenovo\Desktop\training\AddressBookSystem\AddressBookSystem\bin\Debug\AddressBookSystem.exe.config
+C:\Users\lenovo\Desktop\training\AddressBookSystem\AddressBookSystem\bin\Debug\AddressBookSystem.exe
+C:\Users\lenovo\Desktop\training\AddressBookSystem\AddressBookSystem\bin\Debug\AddressBookSystem.pdb
+C:\Users\lenovo\Desktop\training\AddressBookSystem\AddressBookSystem\obj\Debug\AddressBookSystem.exe
+C:\Users\lenovo\Desktop\training\AddressBookSystem\AddressBookSystem\obj\Debug\AddressBookSystem.pdb
