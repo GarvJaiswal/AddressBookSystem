@@ -1,10 +1,6 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AddressBookSystem
+namespace abc
 {
     public class Contact
     {
@@ -67,9 +63,12 @@ namespace AddressBookSystem
 
         public override string ToString()
         {
-            return $"{FirstName} {LastName}\n" +
+            return $"First name: {FirstName}\n" +
+                $"Last name:{LastName}\n" +
                    $"Address: {Address}\n" +
-                   $"City: {City}, State: {State}, Zip: {ZipCode}\n" +
+                   $"City: {City}\n" +
+                   $"State: {State}\n" +
+                   $"Zip: {ZipCode}\n" +
                    $"Phone: {PhoneNumber}\n" +
                    $"Email: {Email}";
         }
@@ -138,11 +137,21 @@ namespace AddressBookSystem
             Console.Write("Enter Last Name of the contact you want to edit: ");
             string lastName = Console.ReadLine();
 
-            Contact existingContact = contacts.FirstOrDefault(c => c.FirstName == firstName && c.LastName == lastName);
+            Contact existingContact = null;
+            foreach (Contact contact in contacts)
+            {
+                if (contact.FirstName == firstName && contact.LastName == lastName)
+                {
+                    existingContact = contact;
+                    break;
+                }
+            }
+
+            // Contact existingContact = contacts.FirstOrDefault(c => c.FirstName == firstName && c.LastName == lastName);
             if (existingContact != null)
             {
                 Console.WriteLine("Enter\n1 to edit first name\n2 to edit last name\n3 to edit address\n4 to edit city\n5 to edit state\n6 to edit zipcode\n7 to edit phone number\n8 to edit email");
-                int option=Convert.ToInt32(Console.ReadLine());
+                int option = Convert.ToInt32(Console.ReadLine());
 
                 switch (option)
                 {
@@ -194,7 +203,16 @@ namespace AddressBookSystem
             Console.Write("Enter Last Name of the contact you want to delete: ");
             string lastName = Console.ReadLine();
 
-            Contact contactToRemove = contacts.FirstOrDefault(c => c.FirstName == firstName && c.LastName == lastName);
+            Contact contactToRemove = null;
+            foreach (Contact contact in contacts)
+            {
+                if (contact.FirstName == firstName && contact.LastName == lastName)
+                {
+                    contactToRemove = contact;
+                    break;
+                }
+            }
+
             if (contactToRemove != null)
             {
                 contacts.Remove(contactToRemove);
@@ -290,4 +308,4 @@ namespace AddressBookSystem
             }
         }
     }
-}*/
+}
