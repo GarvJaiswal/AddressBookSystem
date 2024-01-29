@@ -188,8 +188,9 @@ namespace Address_Book_System
                     case 1:
                         Console.Clear();
                         Console.WriteLine("Add details:\n");
-                        obj1.Add_details();
-                        list.Add(obj1);
+                        AddressBook address = new AddressBook();
+                        address.Add_details();
+                        list.Add(address);
                         Console.Clear();
                         break;
                     case 2:
@@ -214,7 +215,6 @@ namespace Address_Book_System
                         string deleteName = Console.ReadLine();
                         obj1.Delete(list, deleteName);
                         break;
-
                     case 5:
                         Console.Clear();
                         Console.WriteLine("Exited");
