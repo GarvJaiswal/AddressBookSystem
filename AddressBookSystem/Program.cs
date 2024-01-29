@@ -1,228 +1,175 @@
-﻿using Address_Book_System;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace Address_Book_System
+class Contact
 {
-    class Contact
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Address { get; set; }
+    public string City { get; set; }
+    public string State { get; set; }
+    public string PhoneNumber { get; set; }
+    public string Email { get; set; }
+}
+
+class AddressBook
+{
+    private List<Contact> contacts = new List<Contact>();
+
+    public void AddContact()
     {
-        public string firstname;
-        public string lastname;
-        public long phonenumber;
-        public string email;
+        Contact newContact = new Contact();
+
+        Console.Write("Enter First Name: ");
+        newContact.FirstName = Console.ReadLine();
+
+        Console.Write("Enter Last Name: ");
+        newContact.LastName = Console.ReadLine();
+
+        Console.Write("Enter Address: ");
+        newContact.Address = Console.ReadLine();
+
+        Console.Write("Enter City: ");
+        newContact.City = Console.ReadLine();
+
+        Console.Write("Enter State: ");
+        newContact.State = Console.ReadLine();
+
+        Console.Write("Enter Phone Number: ");
+        newContact.PhoneNumber = Console.ReadLine();
+
+        Console.Write("Enter Email: ");
+        newContact.Email = Console.ReadLine();
+
+        contacts.Add(newContact);
+
+        Console.Clear();
+        Console.WriteLine("Contact Added Successfully");
     }
-    class AddressBook : Contact
+
+    public void DisplayContacts()
     {
-        public string address;
-        public string cityname;
-        public string state;
-        public long zipcode;
+        Console.WriteLine("Contacts:\n");
 
-        public void Add_details()
+        foreach (var contact in contacts)
         {
-            Console.Write("Enter First Name: ");
-            this.firstname = Console.ReadLine();
-
-            Console.Write("Enter Last Name: ");
-            this.lastname = Console.ReadLine();
-
-            Console.Write("Enter Address: ");
-            this.address = Console.ReadLine();
-
-            Console.Write("Enter City: ");
-            this.cityname = Console.ReadLine();
-
-            Console.Write("Enter State: ");
-            this.state = Console.ReadLine();
-
-            Console.Write("Enter Phone Number: ");
-            this.phonenumber = Convert.ToInt64(Console.ReadLine());
-
-            Console.Write("Enter Zip Code: ");
-            this.zipcode = Convert.ToInt64(Console.ReadLine());
-
-            Console.Write("Enter Email: ");
-            this.email = Console.ReadLine();
+            Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
+            Console.WriteLine($"Address: {contact.Address}, {contact.City}, {contact.State}");
+            Console.WriteLine($"Phone: {contact.PhoneNumber}");
+            Console.WriteLine($"Email: {contact.Email}\n");
         }
 
-        public void Display_details()
+        Console.ReadLine();
+        Console.Clear();
+    }
+
+    public void EditContact(string firstName)
+    {
+        Contact existingContact = contacts.Find(c => c.FirstName.Equals(firstName));
+
+        if (existingContact == null)
         {
-            Console.WriteLine($"First Name : {this.firstname}");
-            Console.WriteLine($"Last Name : {this.lastname}");
-            Console.WriteLine($"Phone Number : {this.phonenumber}");
-            Console.WriteLine($"Email : {this.email}");
-            Console.WriteLine($"Address : {this.address}");
-            Console.WriteLine($"City : {this.cityname}");
-            Console.WriteLine($"State : {this.state}");
-            Console.WriteLine($"ZipCode : {this.zipcode}");
+            Console.WriteLine("Contact not found.");
         }
-        public void Editted_Contact(List<AddressBook> contact, string name)
+        else
         {
-            int flag = 0, n, found = 0;
-            for (int i = 0; i < contact.Count; i++)
+            DisplayContact(existingContact);
+
+            Console.Write("\nEnter the option to edit: ");
+            int option = Convert.ToInt32(Console.ReadLine());
+
+            switch (option)
             {
-                if (contact[i].firstname == name)
-                {
-                    found = 1;
-                    contact[i].Display_details();
-                    Console.WriteLine();
-                    do
-                    {
-                        Console.WriteLine("Enter the option to edit : ");
-                        Console.WriteLine("1. First Name\n2. Last Name\n3. Phone Number\n4. Email\n5. Address\n6. City\n7. State\n8. ZipCode\n9. Done\n");
-                        n = Convert.ToInt32(Console.ReadLine());
-                        switch (n)
-                        {
-                            case 1:
-                                Console.Clear();
-                                Console.WriteLine("Enter the New First Name : ");
-                                contact[i].firstname = Console.ReadLine();
-                                break;
-                            case 2:
-                                Console.Clear();
-                                Console.WriteLine("Enter the New Last Name : ");
-                                contact[i].lastname = Console.ReadLine();
-                                break;
-                            case 3:
-                                Console.Clear();
-                                Console.WriteLine("Enter the New Phone Number : ");
-                                contact[i].phonenumber = Convert.ToInt64(Console.ReadLine());
-                                break;
-                            case 4:
-                                Console.Clear();
-                                Console.WriteLine("Enter the New Email : ");
-                                contact[i].email = Console.ReadLine();
-                                break;
-                            case 5:
-                                Console.Clear();
-                                Console.WriteLine("Enter the New Address : ");
-                                contact[i].address = Console.ReadLine();
-                                break;
-                            case 6:
-                                Console.Clear();
-                                Console.WriteLine("Enter the New City : ");
-                                contact[i].cityname = Console.ReadLine();
-                                break;
-                            case 7:
-                                Console.Clear();
-                                Console.WriteLine("Enter the New State : ");
-                                contact[i].state = Console.ReadLine();
-                                break;
-                            case 8:
-                                Console.Clear();
-                                Console.WriteLine("Enter the New ZipCode : ");
-                                contact[i].zipcode = Convert.ToInt32(Console.ReadLine());
-                                break;
-                            case 9:
-                                Console.WriteLine("Edited..");
-                                flag = 1;
-                                break;
-                        }
-                        Console.Clear();
-                        Console.WriteLine();
-                    } while (flag == 0);
-
-                }
+                case 1:
+                    Console.Write("Enter the New First Name: ");
+                    existingContact.FirstName = Console.ReadLine();
+                    break;
+                case 2:
+                    Console.Write("Enter the New Last Name: ");
+                    existingContact.LastName = Console.ReadLine();
+                    break;
+                    // Add cases for other fields if needed
             }
-            if (found == 0)
-            {
-                Console.WriteLine("The Given Name is not there in the contact list");
-                Thread.Sleep(2000);
-            }
-        }
 
-
-
-        public void Delete(List<AddressBook> contact, string name)
-        {
-            int found = 0;
-            for (int i = 0; i < contact.Count; i++)
-            {
-                if (contact[i].firstname == name)
-                {
-                    found = 1;
-                    Console.WriteLine($"Are you sure of deleteing {name}\'s contact (Y/N)");
-                    char ch = Convert.ToChar(Console.ReadLine());
-                    if (ch == 'Y' || ch == 'y')
-                    {
-                        contact.Remove(contact[i]);
-                        Console.WriteLine("Contact is Deleted ...");
-                        Thread.Sleep(2000);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Contact Not Deleted");
-                        Thread.Sleep(2000);
-                    }
-                }
-                if (found == 0)
-                {
-                    Console.WriteLine($"The contact with the name '{name}' is not found in the contact list.");
-                    Thread.Sleep(2000);
-                }
-            }
+            Console.Clear();
+            Console.WriteLine("Contact Edited Successfully.");
         }
     }
 
-
-
-    internal class Program
+    public void DeleteContact(string email)
     {
-        static void Main(string[] args)
+        Contact existingContact = contacts.Find(c => c.Email.Equals(email));
+
+        if (existingContact == null)
         {
-            Console.WriteLine("Welcome to Address Book Program");
-            List<AddressBook> list = new List<AddressBook>();
-            AddressBook obj1 = new AddressBook();
-            int flag = 0;
-            do
+            Console.WriteLine("Contact not found");
+        }
+        else
+        {
+            contacts.Remove(existingContact);
+            Console.Clear();
+            Console.WriteLine("Contact deleted successfully");
+        }
+    }
+
+    private void DisplayContact(Contact contact)
+    {
+        Console.WriteLine($"First Name: {contact.FirstName}");
+        Console.WriteLine($"Last Name: {contact.LastName}");
+        Console.WriteLine($"Phone Number: {contact.PhoneNumber}");
+        Console.WriteLine($"Email: {contact.Email}");
+        Console.WriteLine($"Address: {contact.Address}");
+        Console.WriteLine($"City: {contact.City}");
+        Console.WriteLine($"State: {contact.State}\n");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Welcome to Address Book.");
+
+        AddressBook addressBook = new AddressBook();
+        bool isRunning = true;
+
+        while (isRunning)
+        {
+            Console.WriteLine("Enter an Option to perform : ");
+            Console.WriteLine("1. Add Contact");
+            Console.WriteLine("2. Display Contacts");
+            Console.WriteLine("3. Edit Contact");
+            Console.WriteLine("4. Delete Contact");
+            Console.WriteLine("5. Exit");
+
+            int option = Convert.ToInt32(Console.ReadLine());
+
+            switch (option)
             {
-                Console.WriteLine("Enter an Option to perform : ");
-                Console.WriteLine("1. Add Details\n2. Display Details\n3. Edit a Contact\n4. Delete a Contact\n5. Exit");
-                int option = Convert.ToInt32(Console.ReadLine());
-                switch (option)
-                {
-                    case 1:
-                        Console.Clear();
-                        Console.WriteLine("Add details:\n");
-                        AddressBook address = new AddressBook();
-                        address.Add_details();
-                        list.Add(address);
-                        Console.Clear();
-                        break;
-                    case 2:
-                        Console.Clear();
-                        Console.WriteLine("Display Details\n");
-                        for (int i = 0; i < list.Count; i++)
-                        {
-                            list[i].Display_details();
-                            Console.WriteLine();
-                        }
-                        Thread.Sleep(2000);
-                        break;
-                    case 3:
-                        Console.Clear();
-                        Console.WriteLine("Enter name for edit the details\n");
-                        string name = Console.ReadLine();
-                        obj1.Editted_Contact(list, name);
-                        break;
-                    case 4:
-                        Console.Clear();
-                        Console.WriteLine("Enter name for deleting the contact\n");
-                        string deleteName = Console.ReadLine();
-                        obj1.Delete(list, deleteName);
-                        break;
-                    case 5:
-                        Console.Clear();
-                        Console.WriteLine("Exited");
-                        flag = 1;
-                        break;
-                }
-                Console.Clear();
-            } while (flag == 0);
+                case 1:
+                    Console.Clear();
+                    addressBook.AddContact();
+                    break;
+                case 2:
+                    Console.Clear();
+                    addressBook.DisplayContacts();
+                    break;
+                case 3:
+                    Console.Clear();
+                    Console.Write("Enter the First Name of the contact to edit: ");
+                    string editFirstName = Console.ReadLine();
+                    addressBook.EditContact(editFirstName);
+                    break;
+                case 4:
+                    Console.Clear();
+                    Console.Write("Enter the Email of the contact to delete: ");
+                    string deleteEmail = Console.ReadLine();
+                    addressBook.DeleteContact(deleteEmail);
+                    break;
+                case 5:
+                    isRunning = false;
+                    break;
+            }
         }
     }
 }
