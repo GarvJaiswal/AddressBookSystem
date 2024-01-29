@@ -1,7 +1,10 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace abc
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AddressBookSystem
 {
     public class Contact
     {
@@ -64,12 +67,9 @@ namespace abc
 
         public override string ToString()
         {
-            return $"First name: {FirstName}\n"+
-                $"Last name:{LastName}\n" +
+            return $"{FirstName} {LastName}\n" +
                    $"Address: {Address}\n" +
-                   $"City: {City}\n"+
-                   $"State: {State}\n"+
-                   $"Zip: {ZipCode}\n"+
+                   $"City: {City}, State: {State}, Zip: {ZipCode}\n" +
                    $"Phone: {PhoneNumber}\n" +
                    $"Email: {Email}";
         }
@@ -138,21 +138,11 @@ namespace abc
             Console.Write("Enter Last Name of the contact you want to edit: ");
             string lastName = Console.ReadLine();
 
-            Contact existingContact = null;
-            foreach (Contact contact in contacts)
-            {
-                if (contact.FirstName == firstName && contact.LastName == lastName)
-                {
-                    existingContact = contact;
-                    break;
-                }
-            }
-
-            // Contact existingContact = contacts.FirstOrDefault(c => c.FirstName == firstName && c.LastName == lastName);
+            Contact existingContact = contacts.FirstOrDefault(c => c.FirstName == firstName && c.LastName == lastName);
             if (existingContact != null)
             {
                 Console.WriteLine("Enter\n1 to edit first name\n2 to edit last name\n3 to edit address\n4 to edit city\n5 to edit state\n6 to edit zipcode\n7 to edit phone number\n8 to edit email");
-                int option = Convert.ToInt32(Console.ReadLine());
+                int option=Convert.ToInt32(Console.ReadLine());
 
                 switch (option)
                 {
@@ -204,16 +194,7 @@ namespace abc
             Console.Write("Enter Last Name of the contact you want to delete: ");
             string lastName = Console.ReadLine();
 
-            Contact contactToRemove = null;
-            foreach (Contact contact in contacts)
-            {
-                if (contact.FirstName == firstName && contact.LastName == lastName)
-                {
-                    contactToRemove = contact;
-                    break;
-                }
-            }
-
+            Contact contactToRemove = contacts.FirstOrDefault(c => c.FirstName == firstName && c.LastName == lastName);
             if (contactToRemove != null)
             {
                 contacts.Remove(contactToRemove);
@@ -309,63 +290,4 @@ namespace abc
             }
         }
     }
-    class Program
-    {
-        static void Main()
-        {
-            AddressBookSystem addressBookSystem = new AddressBookSystem();
-
-            // Adding address books
-            Console.Write("Enter the name for the first address book: ");
-            string addressBookName1 = Console.ReadLine();
-            addressBookSystem.AddAddressBook(addressBookName1);
-
-            Console.Write("Enter the name for the second address book: ");
-            string addressBookName2 = Console.ReadLine();
-            addressBookSystem.AddAddressBook(addressBookName2);
-
-            // Switching to first address book
-            addressBookSystem.SwitchAddressBook(addressBookName1);
-
-            while (true)
-            {
-                Console.WriteLine("\nChoose an action:");
-                Console.WriteLine("1. Add Contact");
-                Console.WriteLine("2. Edit Contact");
-                Console.WriteLine("3. Delete Contact");
-                Console.WriteLine("4. Display Contacts");
-                Console.WriteLine("5. Switch Address Book");
-                Console.WriteLine("6. Exit");
-
-                Console.Write("Enter your choice: ");
-                string choice = Console.ReadLine();
-
-                if (choice == "6")
-                {
-                    Console.WriteLine("Exiting program...");
-                    break;
-                }
-
-                switch (choice)
-                {
-                    case "1":
-                    case "2":
-                    case "3":
-                        addressBookSystem.HandleUserChoice(choice);
-                        break;
-                    case "4":
-                        addressBookSystem.DisplayCurrentAddressBook();
-                        break;
-                    case "5":
-                        Console.Write("Enter the name of the address book you want to switch to: ");
-                        string switchTo = Console.ReadLine();
-                        addressBookSystem.SwitchAddressBook(switchTo);
-                        break;
-                    default:
-                        Console.WriteLine("Invalid choice.");
-                        break;
-                }
-            }
-        }
-    }
-}
+}*/
