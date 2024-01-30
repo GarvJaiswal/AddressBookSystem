@@ -112,22 +112,33 @@ namespace abc
         {
             Contact contact = new Contact();
             Console.Write("Enter First Name: ");
-            contact.FirstName = Console.ReadLine();
-            Console.Write("Enter Last Name: ");
-            contact.LastName = Console.ReadLine();
-            Console.Write("Enter Address: ");
-            contact.Address = Console.ReadLine();
-            Console.Write("Enter City: ");
-            contact.City = Console.ReadLine();
-            Console.Write("Enter State: ");
-            contact.State = Console.ReadLine();
-            Console.Write("Enter Zip Code: ");
-            contact.ZipCode = Console.ReadLine();
-            Console.Write("Enter Phone Number: ");
-            contact.PhoneNumber = Console.ReadLine();
-            Console.Write("Enter Email: ");
-            contact.Email = Console.ReadLine();
-            contacts.Add(contact);
+            string FirstName = Console.ReadLine();
+
+            foreach(Contact detail in contacts)
+            {
+                if(detail.FirstName == FirstName)
+                {
+                    Console.WriteLine("Duplicate entry");
+                    return;
+                }
+            }
+            
+                contact.FirstName = FirstName;
+                Console.Write("Enter Last Name: ");
+                contact.LastName = Console.ReadLine();
+                Console.Write("Enter Address: ");
+                contact.Address = Console.ReadLine();
+                Console.Write("Enter City: ");
+                contact.City = Console.ReadLine();
+                Console.Write("Enter State: ");
+                contact.State = Console.ReadLine();
+                Console.Write("Enter Zip Code: ");
+                contact.ZipCode = Console.ReadLine();
+                Console.Write("Enter Phone Number: ");
+                contact.PhoneNumber = Console.ReadLine();
+                Console.Write("Enter Email: ");
+                contact.Email = Console.ReadLine();
+                contacts.Add(contact);           
         }
 
         public void EditContact()
