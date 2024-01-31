@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Xml.Linq;
 namespace abc
 {
     public class Contact
@@ -114,33 +116,32 @@ namespace abc
             Console.Write("Enter First Name: ");
             string FirstName = Console.ReadLine();
 
-            foreach(Contact detail in contacts)
+            foreach (Contact detail in contacts)
             {
-                if(detail.FirstName == FirstName)
+                if (detail.FirstName == FirstName)
                 {
                     Console.WriteLine("Duplicate entry");
                     return;
                 }
             }
-            
-                contact.FirstName = FirstName;
-                Console.Write("Enter Last Name: ");
-                contact.LastName = Console.ReadLine();
-                Console.Write("Enter Address: ");
-                contact.Address = Console.ReadLine();
-                Console.Write("Enter City: ");
-                contact.City = Console.ReadLine();
-                Console.Write("Enter State: ");
-                contact.State = Console.ReadLine();
-                Console.Write("Enter Zip Code: ");
-                contact.ZipCode = Console.ReadLine();
-                Console.Write("Enter Phone Number: ");
-                contact.PhoneNumber = Console.ReadLine();
-                Console.Write("Enter Email: ");
-                contact.Email = Console.ReadLine();
-                contacts.Add(contact);           
-        }
 
+            contact.FirstName = FirstName;
+            Console.Write("Enter Last Name: ");
+            contact.LastName = Console.ReadLine();
+            Console.Write("Enter Address: ");
+            contact.Address = Console.ReadLine();
+            Console.Write("Enter City: ");
+            contact.City = Console.ReadLine();
+            Console.Write("Enter State: ");
+            contact.State = Console.ReadLine();
+            Console.Write("Enter Zip Code: ");
+            contact.ZipCode = Console.ReadLine();
+            Console.Write("Enter Phone Number: ");
+            contact.PhoneNumber = Console.ReadLine();
+            Console.Write("Enter Email: ");
+            contact.Email = Console.ReadLine();
+            contacts.Add(contact);
+        }
         public void EditContact()
         {
             Console.Write("Enter First Name of the contact you want to edit: ");
@@ -234,6 +235,52 @@ namespace abc
                 Console.WriteLine("Contact not found.");
             }
         }
+
+        /*public void Search()
+        {
+            Contact contactToSearch = null;
+            Console.Write("Enter first name of the person you want to search for:");
+            string first = Console.ReadLine();
+            Console.Write("Enter last name of the person you want to search for: ");
+            string last = Console.ReadLine();
+
+            foreach (Contact contact in contacts)
+            {
+                if (contact.FirstName == first && contact.LastName == last)
+                {
+                    contactToSearch = contact;
+                    break;
+                }
+            }
+            //
+            if (contactToSearch != null)
+            {
+                Console.WriteLine("Contact found:");
+                Console.WriteLine(contactToSearch);                
+            }
+            else
+            {
+                Console.WriteLine("Contact not found");
+            }
+        }*/
+
+        public List<Contact> Search(string fname,string lname)
+        {
+            List<Contact> foundContacts = new List<Contact>();
+            string fsearchLower = fname.ToLower();
+            string lsearchLower= lname.ToLower();
+            foreach (var contact in contacts)
+            {
+                string firstNameLower = contact.City.ToLower();
+                string lastNameLower = contact.State.ToLower();
+                if (firstNameLower.Equals(fsearchLower) && lastNameLower.Equals(lsearchLower))
+                {
+                    foundContacts.Add(contact);
+                }
+            }
+            return foundContacts;
+        }
+
     }
 
     public class AddressBookSystem
@@ -264,6 +311,32 @@ namespace abc
             else
             {
                 Console.WriteLine($"Address Book '{name}' does not exist.");
+            }
+        }
+
+        public void SearchContactByCityName(string cname, string sname)
+        {
+            bool foundInAnyAddressBook = false;
+            string citysearchLower = cname.ToLower();
+            string statesearchLower = sname.ToLower();
+            foreach (var addressBook in addressBooks.Values)
+            {
+                List<Contact> foundContacts = addressBook.Search(citysearchLower, statesearchLower);
+                if (foundContacts.Count > 0)
+                {
+                    Console.WriteLine($"Contacts found in Address Book '{addressBook.Name}':");
+                    foreach (var contact in foundContacts)
+                    {
+                        Console.WriteLine(contact);
+                        Console.WriteLine();
+                    }
+                    foundInAnyAddressBook = true;
+                }
+            }
+
+            if (!foundInAnyAddressBook)
+            {
+                Console.WriteLine($"No contacts found with the city '{cname}' and state '{sname}' in any address book.");
             }
         }
 
@@ -318,5 +391,6 @@ namespace abc
                 Console.WriteLine("No address book selected.");
             }
         }
+       
     }
 }

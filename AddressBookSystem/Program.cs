@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 namespace abc
 {
     class Program
@@ -29,12 +30,13 @@ namespace abc
                 Console.WriteLine("3. Delete Contact");
                 Console.WriteLine("4. Display Contacts");
                 Console.WriteLine("5. Switch Address Book");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("6. Search");
+                Console.WriteLine("7. Exit");
 
                 Console.Write("Enter your choice: ");
                 string choice = Console.ReadLine();
 
-                if (choice == "6")
+                if (choice == "7")
                 {
                     Console.WriteLine("Exiting program...");
                     break;
@@ -54,6 +56,13 @@ namespace abc
                         Console.Write("Enter the name of the address book you want to switch to: ");
                         string switchTo = Console.ReadLine();
                         addressBookSystem.SwitchAddressBook(switchTo);
+                        break;
+                    case "6":
+                        Console.Write("Enter the city you want to find contacts of: ");
+                        string cname=Console.ReadLine();
+                        Console.Write("Enter the state you want to find contacts of: ");
+                        string sname = Console.ReadLine();
+                        addressBookSystem.SearchContactByCityName(cname,sname);
                         break;
                     default:
                         Console.WriteLine("Invalid choice.");
