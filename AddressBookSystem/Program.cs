@@ -30,14 +30,14 @@ namespace abc
                 Console.WriteLine("6. Search name in a City or State");
                 Console.WriteLine("7. Search all names in a City");
                 Console.WriteLine("8. Search all names in a State");
-                //Console.WriteLine("9. Enter name of the city to get count of");
-                //Console.WriteLine("10. Enter name of the state to get count of");
-                Console.WriteLine("9. Exit");
+                Console.WriteLine("9. Enter name of the city to get count of");
+                Console.WriteLine("10. Enter name of the state to get count of");
+                Console.WriteLine("11. Exit");
 
                 Console.Write("Enter your choice: ");
                 string choice = Console.ReadLine();
 
-                if (choice == "9")
+                if (choice == "11")
                 {
                     Console.WriteLine("Exiting program...");
                     break;
@@ -85,7 +85,7 @@ namespace abc
                         }
                         break;
 
-                   /* case "9":
+                    case "9":
                         {
                             Console.Write("Enter the city name you want to get count of: ");
                             string cname = Console.ReadLine();
@@ -98,7 +98,7 @@ namespace abc
                             string sname = Console.ReadLine();
                             addressBookSystem.CountByState(sname);
                         }
-                        break;*/
+                        break;
                     default:
                         Console.WriteLine("Invalid choice.");
                         break;
