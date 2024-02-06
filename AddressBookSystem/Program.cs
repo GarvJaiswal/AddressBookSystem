@@ -28,15 +28,16 @@ namespace abc
                 Console.WriteLine("4. Display Contacts");
                 Console.WriteLine("5. Switch Address Book");
                 Console.WriteLine("6. Search name in a City or State");
-                Console.WriteLine("7. Search all names in a City or State");
-                Console.WriteLine("8. Enter name of the city to get count of");
-                Console.WriteLine("9. Enter name of the state to get count of");
-                Console.WriteLine("10. Exit");
+                Console.WriteLine("7. Search all names in a City");
+                Console.WriteLine("8. Search all names in a State");
+                //Console.WriteLine("9. Enter name of the city to get count of");
+                //Console.WriteLine("10. Enter name of the state to get count of");
+                Console.WriteLine("9. Exit");
 
                 Console.Write("Enter your choice: ");
                 string choice = Console.ReadLine();
 
-                if (choice == "10")
+                if (choice == "9")
                 {
                     Console.WriteLine("Exiting program...");
                     break;
@@ -70,27 +71,34 @@ namespace abc
                         break;
 
                     case "7":
-                        { 
-                        Console.Write("Enter the city you want to find contacts of: ");
-                        string cname = Console.ReadLine();
-                        Console.Write("Enter the state you want to find contacts of: ");
-                        string sname = Console.ReadLine();
-                        addressBookSystem.SearchContactByCityName(cname, sname); }
+                        {
+                            Console.Write("Enter the city you want to find contacts of: ");
+                            string cityName = Console.ReadLine();
+                            addressBookSystem.SearchContactsByCity(cityName);
+                        }
                         break;
                     case "8":
                         {
-                        Console.Write("Enter the city name you want to get count of: ");
-                        string cname = Console.ReadLine();
-                        addressBookSystem.CountByCity(cname);
+                            Console.Write("Enter the state you want to find contacts of: ");
+                            string stateName = Console.ReadLine();
+                            addressBookSystem.SearchContactsByState(stateName);
                         }
                         break;
-                    case "9":
+
+                   /* case "9":
                         {
-                        Console.Write("Enter the state name you want to get count of: ");
-                        string sname=Console.ReadLine();
-                        addressBookSystem.CountByState(sname);
+                            Console.Write("Enter the city name you want to get count of: ");
+                            string cname = Console.ReadLine();
+                            addressBookSystem.CountByCity(cname);
                         }
                         break;
+                    case "10":
+                        {
+                            Console.Write("Enter the state name you want to get count of: ");
+                            string sname = Console.ReadLine();
+                            addressBookSystem.CountByState(sname);
+                        }
+                        break;*/
                     default:
                         Console.WriteLine("Invalid choice.");
                         break;

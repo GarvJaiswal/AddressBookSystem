@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-namespace abc
-{
+﻿
     public class Contact
     {
         private string firstName;
@@ -9,9 +6,9 @@ namespace abc
         private string address;
         private string city;
         private string state;
-        private string zipCode;
         private string phoneNumber;
         private string email;
+        private string zipCode;
 
         public string FirstName
         {
@@ -73,4 +70,3 @@ namespace abc
                    $"Email: {Email}";
         }
     }
-}

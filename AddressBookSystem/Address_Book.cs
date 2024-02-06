@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace abc
-{
+
     public class AddressBook
     {
         private List<Contact> contacts = new List<Contact>();
@@ -89,7 +85,6 @@ namespace abc
                 }
             }
 
-            // Contact existingContact = contacts.FirstOrDefault(c => c.FirstName == firstName && c.LastName == lastName);
             if (existingContact != null)
             {
                 Console.WriteLine("Enter\n1 to edit first name\n2 to edit last name\n3 to edit address\n4 to edit city\n5 to edit state\n6 to edit zipcode\n7 to edit phone number\n8 to edit email");
@@ -184,16 +179,14 @@ namespace abc
             }
             return foundContacts;
         }
-        public List<Contact> Search(string fname, string lname)
+
+        public List<Contact> SearchByCity(string cityName)
         {
             List<Contact> foundContacts = new List<Contact>();
-            string fsearchLower = fname.ToLower();
-            string lsearchLower = lname.ToLower();
+            string cityLower = cityName.ToLower();
             foreach (var contact in contacts)
             {
-                string firstNameLower = contact.City.ToLower();
-                string lastNameLower = contact.State.ToLower();
-                if (firstNameLower.Equals(fsearchLower) && lastNameLower.Equals(lsearchLower))
+                if (contact.City.ToLower() == cityLower)
                 {
                     foundContacts.Add(contact);
                 }
@@ -201,7 +194,22 @@ namespace abc
             return foundContacts;
         }
 
-        public List<Contact> CountByCityName(string cityName)
+        public List<Contact> SearchByState(string stateName)
+        {
+            List<Contact> foundContacts = new List<Contact>();
+            string stateLower = stateName.ToLower();
+            foreach (var contact in contacts)
+            {
+                if (contact.State.ToLower() == stateLower)
+                {
+                    foundContacts.Add(contact);
+                }
+            }
+            return foundContacts;
+        }
+      
+
+       /* public List<Contact> CountByCityName(string cityName)
         {
             List<Contact> foundContacts = new List<Contact>();
             string cName = cityName.ToLower();
@@ -225,7 +233,5 @@ namespace abc
                 }
             }
             return foundContacts;
-        }
-
+        }*/
     }
-}

@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace abc
 {
     public class AddressBookSystem
@@ -62,17 +58,16 @@ namespace abc
                 Console.WriteLine($"No contacts found with the name '{name}' in '{cname}' and '{sname}' in any address book.");
             }
         }
-        public void SearchContactByCityName(string cname, string sname)
+       
+        public void SearchContactsByCity(string cityName)
         {
             bool foundInAnyAddressBook = false;
-            string citysearchLower = cname.ToLower();
-            string statesearchLower = sname.ToLower();
             foreach (var addressBook in addressBooks.Values)
             {
-                List<Contact> foundContacts = addressBook.Search(citysearchLower, statesearchLower);
+                List<Contact> foundContacts = addressBook.SearchByCity(cityName);
                 if (foundContacts.Count > 0)
                 {
-                    Console.WriteLine($"Contacts found in Address Book '{addressBook.Name}':");
+                    Console.WriteLine($"Contacts found in Address Book '{addressBook.Name}' for city '{cityName}':");
                     foreach (var contact in foundContacts)
                     {
                         Console.WriteLine(contact);
@@ -84,11 +79,35 @@ namespace abc
 
             if (!foundInAnyAddressBook)
             {
-                Console.WriteLine($"No contacts found with the city '{cname}' and state '{sname}' in any address book.");
+                Console.WriteLine($"No contacts found with the city '{cityName}' in any address book.");
             }
         }
 
-        public void CountByCity(string cityName)
+        public void SearchContactsByState(string stateName)
+        {
+            bool foundInAnyAddressBook = false;
+            foreach (var addressBook in addressBooks.Values)
+            {
+                List<Contact> foundContacts = addressBook.SearchByState(stateName);
+                if (foundContacts.Count > 0)
+                {
+                    Console.WriteLine($"Contacts found in Address Book '{addressBook.Name}' for state '{stateName}':");
+                    foreach (var contact in foundContacts)
+                    {
+                        Console.WriteLine(contact);
+                        Console.WriteLine();
+                    }
+                    foundInAnyAddressBook = true;
+                }
+            }
+
+            if (!foundInAnyAddressBook)
+            {
+                Console.WriteLine($"No contacts found with the state '{stateName}' in any address book.");
+            }
+        }
+
+       /* public void CountByCity(string cityName)
         {
             int count = 0;
             string citysearchLower = cityName.ToLower();
@@ -124,7 +143,7 @@ namespace abc
                 Console.WriteLine("No entries for " + stateName);
 
 
-        }
+        }*/
 
 
         public void HandleUserChoice(string choice)
