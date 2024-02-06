@@ -33,12 +33,15 @@ namespace abc
                 Console.WriteLine("9. Enter name of the city to get count of");
                 Console.WriteLine("10. Enter name of the state to get count of");
                 Console.WriteLine("11. To sort entries alphabetically by person's name");
-                Console.WriteLine("12. Exit");
+                Console.WriteLine("12. To sort entries by city name");
+                Console.WriteLine("13. To sort entries by state name");
+                Console.WriteLine("14. To sort entries by zip code");
+                Console.WriteLine("15. Exit");
 
                 Console.Write("Enter your choice: ");
                 string choice = Console.ReadLine();
 
-                if (choice == "12")
+                if (choice == "15")
                 {
                     Console.WriteLine("Exiting program...");
                     break;
@@ -103,6 +106,21 @@ namespace abc
                     case "11":
                         {
                             addressBookSystem.SortContactsByName();
+                        }
+                        break;
+                    case "12":
+                        {
+                            addressBookSystem.SortContactsByCity();
+                        }
+                        break;
+                    case "13":
+                        {
+                            addressBookSystem.SortContactsByState();
+                        }
+                        break;
+                    case "14":
+                        {
+                            addressBookSystem.SortContactsByZip();
                         }
                         break;
                     default:

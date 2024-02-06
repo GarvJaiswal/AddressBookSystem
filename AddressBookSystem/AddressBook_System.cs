@@ -209,5 +209,41 @@ namespace abc
                 Console.WriteLine("No address book selected.");
             }
         }
+        public void SortContactsByCity()
+        {
+            if (currentAddressBook != null)
+            {
+                currentAddressBook.SortContactsByCity();
+                Console.WriteLine("Contacts sorted by city name.");
+            }
+            else
+            {
+                Console.WriteLine("No address book selected.");
+            }
+        }
+        public void SortContactsByState()
+        {
+            if (currentAddressBook != null)
+            {
+                currentAddressBook.SortContactsByState();
+                Console.WriteLine("Contacts sorted by state name.");
+            }
+            else
+            {
+                Console.WriteLine("No address book selected.");
+            }
+        }
+        public void SortContactsByZip()
+        {
+            if (currentAddressBook != null)
+            {
+                currentAddressBook.SortContactsByZip();
+                Console.WriteLine("Contacts sorted by zip code.");
+            }
+            else
+            {
+                Console.WriteLine("No address book selected.");
+            }
+        }
     }
 }
