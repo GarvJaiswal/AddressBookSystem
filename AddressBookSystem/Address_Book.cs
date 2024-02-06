@@ -209,7 +209,7 @@ using System.Collections.Generic;
         }
       
 
-       /* public List<Contact> CountByCityName(string cityName)
+       public List<Contact> CountByCityName(string cityName)
         {
             List<Contact> foundContacts = new List<Contact>();
             string cName = cityName.ToLower();
@@ -233,5 +233,5 @@ using System.Collections.Generic;
                 }
             }
             return foundContacts;
-        }*/
+        }
     }

@@ -107,7 +107,7 @@ namespace abc
             }
         }
 
-       /* public void CountByCity(string cityName)
+       public void CountByCity(string cityName)
         {
             int count = 0;
             string citysearchLower = cityName.ToLower();
@@ -143,7 +143,7 @@ namespace abc
                 Console.WriteLine("No entries for " + stateName);
 
 
-        }*/
+        }
 
 
         public void HandleUserChoice(string choice)
