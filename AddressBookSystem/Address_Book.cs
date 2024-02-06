@@ -252,5 +252,53 @@ using System.Collections.Generic;
             }
         }
     }
+    public void SortContactsByCity()
+    {
+        for(int i = 0;i < contacts.Count - 1;i++)
+        {
+            for(int j=0;j < contacts.Count -i - 1; j++)
+            {
+                if (string.Compare(contacts[j].City, contacts[j + 1].City) > 0)
+                {
+
+                    Contact temp = contacts[j];
+                    contacts[j] = contacts[j + 1];
+                    contacts[j + 1] = temp;
+                }
+            }
+        }
+    }
+    public void SortContactsByState()
+    {
+        for (int i = 0; i < contacts.Count - 1; i++)
+        {
+            for (int j = 0; j < contacts.Count - i - 1; j++)
+            {
+                if (string.Compare(contacts[j].State, contacts[j + 1].State) > 0)
+                {
+
+                    Contact temp = contacts[j];
+                    contacts[j] = contacts[j + 1];
+                    contacts[j + 1] = temp;
+                }
+            }
+        }
+    }
+    public void SortContactsByZip()
+    {
+        for (int i = 0; i < contacts.Count - 1; i++)
+        {
+            for (int j = 0; j < contacts.Count - i - 1; j++)
+            {
+                if (string.Compare(contacts[j].ZipCode, contacts[j + 1].ZipCode) > 0)
+                {
+
+                    Contact temp = contacts[j];
+                    contacts[j] = contacts[j + 1];
+                    contacts[j + 1] = temp;
+                }
+            }
+        }
+    }
 
 }
