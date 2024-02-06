@@ -32,12 +32,13 @@ namespace abc
                 Console.WriteLine("8. Search all names in a State");
                 Console.WriteLine("9. Enter name of the city to get count of");
                 Console.WriteLine("10. Enter name of the state to get count of");
-                Console.WriteLine("11. Exit");
+                Console.WriteLine("11. To sort entries alphabetically by person's name");
+                Console.WriteLine("12. Exit");
 
                 Console.Write("Enter your choice: ");
                 string choice = Console.ReadLine();
 
-                if (choice == "11")
+                if (choice == "12")
                 {
                     Console.WriteLine("Exiting program...");
                     break;
@@ -97,6 +98,11 @@ namespace abc
                             Console.Write("Enter the state name you want to get count of: ");
                             string sname = Console.ReadLine();
                             addressBookSystem.CountByState(sname);
+                        }
+                        break;
+                    case "11":
+                        {
+                            addressBookSystem.SortContactsByName();
                         }
                         break;
                     default:

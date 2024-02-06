@@ -197,6 +197,17 @@ namespace abc
                 Console.WriteLine("No address book selected.");
             }
         }
-
+        public void SortContactsByName()
+        {
+            if (currentAddressBook != null)
+            {
+                currentAddressBook.SortContactsByName();
+                Console.WriteLine("Contacts sorted by name.");
+            }
+            else
+            {
+                Console.WriteLine("No address book selected.");
+            }
+        }
     }
 }

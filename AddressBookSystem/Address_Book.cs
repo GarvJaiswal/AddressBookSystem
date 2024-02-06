@@ -16,10 +16,12 @@ using System.Collections.Generic;
         public void AddContact(Contact contact)
         {
             contacts.Add(contact);
+            
         }
 
         public void DisplayContacts()
         {
+            
             if (contacts.Count == 0)
             {
                 Console.WriteLine("No contacts in this Address Book.");
@@ -234,4 +236,21 @@ using System.Collections.Generic;
             }
             return foundContacts;
         }
+    public void SortContactsByName()
+    {
+        for (int i = 0; i < contacts.Count - 1; i++)
+        {
+            for (int j = 0; j < contacts.Count - i - 1; j++)
+            {
+                if (string.Compare(contacts[j].FirstName, contacts[j + 1].FirstName) > 0)
+                {
+                    
+                    Contact temp = contacts[j];
+                    contacts[j] = contacts[j + 1];
+                    contacts[j + 1] = temp;
+                }
+            }
+        }
     }
+
+}
