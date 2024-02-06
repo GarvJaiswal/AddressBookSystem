@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
 namespace abc
 {
     class Program
@@ -30,13 +27,17 @@ namespace abc
                 Console.WriteLine("3. Delete Contact");
                 Console.WriteLine("4. Display Contacts");
                 Console.WriteLine("5. Switch Address Book");
-                Console.WriteLine("6. Search");
-                Console.WriteLine("7. Exit");
+                Console.WriteLine("6. Search name in a City or State");
+                Console.WriteLine("7. Search all names in a City");
+                Console.WriteLine("8. Search all names in a State");
+                Console.WriteLine("9. Enter name of the city to get count of");
+                Console.WriteLine("10. Enter name of the state to get count of");
+                Console.WriteLine("11. Exit");
 
                 Console.Write("Enter your choice: ");
                 string choice = Console.ReadLine();
 
-                if (choice == "7")
+                if (choice == "11")
                 {
                     Console.WriteLine("Exiting program...");
                     break;
@@ -58,11 +59,45 @@ namespace abc
                         addressBookSystem.SwitchAddressBook(switchTo);
                         break;
                     case "6":
-                        Console.Write("Enter the city you want to find contacts of: ");
-                        string cname=Console.ReadLine();
-                        Console.Write("Enter the state you want to find contacts of: ");
-                        string sname = Console.ReadLine();
-                        addressBookSystem.SearchContactByCityName(cname,sname);
+                        {
+                            Console.Write("Enter the first name you want to search for: ");
+                            string name = Console.ReadLine();
+                            Console.Write("Enter the city in which you want to find the name: ");
+                            string cname = Console.ReadLine();
+                            Console.Write("Enter the state in which you want to find the name: ");
+                            string sname = Console.ReadLine();
+                            addressBookSystem.SearchContactInCityOrState(name, cname, sname);
+                        }
+                        break;
+
+                    case "7":
+                        {
+                            Console.Write("Enter the city you want to find contacts of: ");
+                            string cityName = Console.ReadLine();
+                            addressBookSystem.SearchContactsByCity(cityName);
+                        }
+                        break;
+                    case "8":
+                        {
+                            Console.Write("Enter the state you want to find contacts of: ");
+                            string stateName = Console.ReadLine();
+                            addressBookSystem.SearchContactsByState(stateName);
+                        }
+                        break;
+
+                    case "9":
+                        {
+                            Console.Write("Enter the city name you want to get count of: ");
+                            string cname = Console.ReadLine();
+                            addressBookSystem.CountByCity(cname);
+                        }
+                        break;
+                    case "10":
+                        {
+                            Console.Write("Enter the state name you want to get count of: ");
+                            string sname = Console.ReadLine();
+                            addressBookSystem.CountByState(sname);
+                        }
                         break;
                     default:
                         Console.WriteLine("Invalid choice.");
