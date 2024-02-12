@@ -384,6 +384,52 @@ namespace abc
         {
             currentAddressBook.WriterToFile(path);
         }
+
+        public void AddContactsFromJsonFile(string fileName)
+        {
+            using (StreamReader sr = new StreamReader(fileName))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] data = line.Split(','); // Assuming ';' is the delimiter between different fields
+                    if (data.Length >= 8)
+                    {
+                        Contact contact = new Contact
+                        {
+                            FirstName = data[0],
+                            LastName = data[1],
+                            Address = data[2],
+                            City = data[3],
+                            State = data[4],
+                            ZipCode = data[5],
+                            PhoneNumber = data[6],
+                            Email = data[7]
+                        };
+                        // Add the contact to the current address book
+                        if (currentAddressBook != null)
+                        {
+                            currentAddressBook.AddContact(contact);
+                        }
+                        else
+                        {
+                            Console.WriteLine("No address book selected.");
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid data format in the file.");
+                        break;
+                    }
+                }
+                Console.WriteLine("Contacts added from file successfully.");
+            }
+        }
+        public void WriterToJsonFile(string path)
+        {
+            currentAddressBook.WriterToFile(path);
+        }
     }
 }
 
