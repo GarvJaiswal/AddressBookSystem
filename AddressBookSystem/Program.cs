@@ -40,12 +40,14 @@ namespace abc
                 Console.WriteLine("16.To write to a text file");
                 Console.WriteLine("17.To enter data from csv file.");
                 Console.WriteLine("18.To write to a csv file");
-                Console.WriteLine("19.Exit");
+                Console.WriteLine("19.To enter data from json file.");
+                Console.WriteLine("20.To write to a json file");
+                Console.WriteLine("21.Exit");
 
                 Console.Write("Enter your choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                
-                if (choice == 19)
+                if (choice == 21)
                 {
                     Console.WriteLine("Exiting program...");
                     break;
@@ -154,7 +156,20 @@ namespace abc
                             addressBookSystem.WriterToCsvFile(path);
                         }
                         break;
-                            
+
+                    case 19:
+                        {
+                            string path = @"C:\\Users\\lenovo\\Desktop\\training\\AddressBookSystem\\AddressBookSystem\\data.json";
+                            addressBookSystem.AddContactsFromJsonFile(path);
+                        }
+                        break;
+                    case 20:
+                        {
+                            string path = @"C:\\Users\\lenovo\\Desktop\\training\\AddressBookSystem\\AddressBookSystem\\writerdata.json";
+                            addressBookSystem.WriterToJsonFile(path);
+                        }
+                        break;
+
                     default:
                         Console.WriteLine("Invalid choice.");
                         break;
