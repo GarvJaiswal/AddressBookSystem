@@ -36,14 +36,16 @@ namespace abc
                 Console.WriteLine("12.To sort entries by city name");
                 Console.WriteLine("13.To sort entries by state name");
                 Console.WriteLine("14.To sort entries by zip code");
-                Console.WriteLine("15.To enter data from file.");
-                Console.WriteLine("16.To write to file");
-                Console.WriteLine("17.Exit");
+                Console.WriteLine("15.To enter data from text file.");
+                Console.WriteLine("16.To write to a text file");
+                Console.WriteLine("17.To enter data from csv file.");
+                Console.WriteLine("18.To write to a csv file");
+                Console.WriteLine("19.Exit");
 
                 Console.Write("Enter your choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                
-                if (choice == 17)
+                if (choice == 19)
                 {
                     Console.WriteLine("Exiting program...");
                     break;
@@ -131,13 +133,25 @@ namespace abc
                         {
                             string path = @"C:\\Users\\lenovo\\Desktop\\training\\AddressBookSystem\\AddressBookSystem\\data.txt";
 
-                            addressBookSystem.AddContactsFromFile(path);
+                            addressBookSystem.AddContactsFromTextFile(path);
                         }
                         break;
                     case 16:
                         {
                             string path = @"C:\\Users\\lenovo\\Desktop\\training\\AddressBookSystem\\AddressBookSystem\\writerData.txt";
-                            addressBookSystem.WriterToFile(path);
+                            addressBookSystem.WriterToTextFile(path);
+                        }
+                        break;
+                    case 17:
+                        {
+                            string path = @"C:\\Users\\lenovo\\Desktop\\training\\AddressBookSystem\\AddressBookSystem\\data.csv";
+                            addressBookSystem.AddContactsFromCsvFile(path);
+                        }
+                        break;
+                    case 18:
+                        {
+                            string path = @"C:\\Users\\lenovo\\Desktop\\training\\AddressBookSystem\\AddressBookSystem\\writerdata.csv";
+                            addressBookSystem.WriterToCsvFile(path);
                         }
                         break;
                             
